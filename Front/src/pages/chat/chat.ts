@@ -16,7 +16,7 @@ export class ChatPage {
   messagesAll: any = [];
   nickname = '';
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
   private alertCtrl: AlertController,
   public navParams: NavParams,
   private socket: Socket,
@@ -38,11 +38,11 @@ export class ChatPage {
     this.scrollToBottom();
   }
 
- 
+
 
   sendData() {
 
-    var txt = document.getElementById('chat_input');
+    const txt: any = document.getElementById('chat_input');
 
     if(txt) {
 
@@ -64,7 +64,7 @@ export class ChatPage {
         this.ajax(list);
 
 
-        
+
 
       } else {
 
@@ -79,7 +79,7 @@ export class ChatPage {
 
     }
 
-   
+
   }
 
 
@@ -108,8 +108,8 @@ export class ChatPage {
 
   ajax(data) {
 
-    fetch('http://104.248.223.183:3000/', { 
-      method: 'POST', 
+    fetch('http://104.248.223.183:3000/', {
+      method: 'POST',
       body: JSON.stringify(data),
       headers:{
         'Content-Type': 'application/json'
@@ -122,7 +122,7 @@ export class ChatPage {
 
   ajaxList() {
 
-    fetch('http://104.248.223.183:3000/list', { 
+    fetch('http://104.248.223.183:3000/list', {
       method: 'GET'
     })
     .then(response => response.json())
@@ -143,15 +143,15 @@ export class ChatPage {
             autoShow: true,
             id: 'ca-app-pub-8985767471611621/2714733146'
         };
- 
+
         this.admob.interstitial.config(interstitialConfig);
- 
+
         this.admob.interstitial.prepare().then(() => {
             // success
         });
- 
-        
- 
+
+
+
     }
 
 }
