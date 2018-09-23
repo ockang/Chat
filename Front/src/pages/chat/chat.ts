@@ -44,7 +44,7 @@ export class ChatPage {
 
     if(txt) {
 
-      var txt_l = txt.value;
+      var txt_l = (txt.value) ? txt.value : null;
 
       if(txt_l.length > 0 && txt_l.length <= 30) {
 
