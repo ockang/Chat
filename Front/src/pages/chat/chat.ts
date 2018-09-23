@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core'
 import { NavController, NavParams, Content, AlertController } from 'ionic-angular'
 import { Socket } from 'ng-socket-io';
 import { Observable } from 'rxjs/Observable';
+import { AdMobFree, AdMobFreeBannerConfig, AdMobFreeInterstitialConfig } from '@ionic-native/admob-free';
 
 @Component({
   selector: 'page-chat',
@@ -18,7 +19,8 @@ export class ChatPage {
   constructor(public navCtrl: NavController, 
   private alertCtrl: AlertController,
   public navParams: NavParams,
-  private socket: Socket) {
+  private socket: Socket,
+  public admob: AdMobFree) {
 
     this.nickname = localStorage.getItem('username');
 
@@ -44,7 +46,9 @@ export class ChatPage {
 
     if(txt) {
 
-      var txt_l = (txt.value) ? txt.value : null;
+      console.log(txt);
+
+      var txt_l = (txt) ? txt.value : null;
 
       if(txt_l.length > 0 && txt_l.length <= 30) {
 
@@ -130,5 +134,24 @@ export class ChatPage {
     });
 
   }
+
+
+  showBanner() {
+
+        let interstitialConfig: AdMobFreeInterstitialConfig = {
+            isTesting: true, // Remove in production
+            autoShow: true,
+            id: 'ca-app-pub-8985767471611621/2714733146'
+        };
+ 
+        this.admob.interstitial.config(interstitialConfig);
+ 
+        this.admob.interstitial.prepare().then(() => {
+            // success
+        });
+ 
+        
+ 
+    }
 
 }
